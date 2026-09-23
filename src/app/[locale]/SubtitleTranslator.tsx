@@ -753,27 +753,31 @@ const SubtitleTranslator = () => {
         <BilingualReviewPanel sourceText={sourceText} sourceFormat={sourceFileType} translatedText={translatedText} translatedFormat={translatedTextExt} />
       )}
 
-      <MultiLanguageSettingsModal
-        open={multiLangModalOpen}
-        onClose={() => setMultiLangModalOpen(false)}
-        targetLanguages={targetLanguages}
-        setTargetLanguages={setTargetLanguages}
-        setMultiLanguageMode={setMultiLanguageMode}
-      />
+      {multiLangModalOpen && (
+        <MultiLanguageSettingsModal
+          open={multiLangModalOpen}
+          onClose={() => setMultiLangModalOpen(false)}
+          targetLanguages={targetLanguages}
+          setTargetLanguages={setTargetLanguages}
+          setMultiLanguageMode={setMultiLanguageMode}
+        />
+      )}
 
-      <AssStyleDrawer
-        open={assStyleOpen}
-        onClose={() => setAssStyleOpen(false)}
-        config={assStyle}
-        preset={assPreset}
-        customStyle={assCustomStyle}
-        onChange={handleAssChange}
-        isOriginalFirst={isOriginalFirst}
-        sourceLang={sourceLanguage}
-        targetLang={targetLanguage}
-        autoWrap={assAutoWrap}
-        onAutoWrapChange={setAssAutoWrap}
-      />
+      {assStyleOpen && (
+        <AssStyleDrawer
+          open={assStyleOpen}
+          onClose={() => setAssStyleOpen(false)}
+          config={assStyle}
+          preset={assPreset}
+          customStyle={assCustomStyle}
+          onChange={handleAssChange}
+          isOriginalFirst={isOriginalFirst}
+          sourceLang={sourceLanguage}
+          targetLang={targetLanguage}
+          autoWrap={assAutoWrap}
+          onAutoWrapChange={setAssAutoWrap}
+        />
+      )}
     </Spin>
   );
 };

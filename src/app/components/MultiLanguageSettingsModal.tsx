@@ -93,6 +93,7 @@ const MultiLanguageSettingsModal = ({ open, onClose, targetLanguages, setTargetL
         </span>
       }
       open={open}
+      destroyOnClose
       onCancel={onClose}
       footer={
         <Space>

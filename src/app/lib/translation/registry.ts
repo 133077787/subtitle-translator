@@ -1709,6 +1709,14 @@ export const PROVIDERS = {
       // 无非是"一个 OpenAI 兼容地址 + 一份文档",而后两者一直就是芯片。
       // 独立 provider 只多给一个存档槽位，却要多占一个下拉项、多一份重复配置。
       { label: "LiteLLM", url: "http://127.0.0.1:4000/v1/chat/completions", docs: "https://docs.litellm.ai/docs/" },
+      // 9Router / OmniRoute：同为自托管网关（OmniRoute 是 9Router 的 TS fork），但**默认端口不同**，
+      // 所以是两枚芯片、各指各的地址。⚠ 两枚的地址不能相同 —— 芯片的高亮与 React key 都以 url 为
+      // 判据（TranslationSettings 里 `activeEndpoint === ep.url` 与 `key={ep.url}`），同一 url 挂两枚
+      // 会让两个同时高亮、并撞 key。
+      // 端口依据（2026-09-22 查源码，别只信 README）：9Router 的 package.json 是 `--port 20127`
+      // （它的 README 示例却写 20128，与源码矛盾，以源码为准）；OmniRoute 是 `${PORT:-20128}`。
+      { label: "9Router", url: "http://127.0.0.1:20127/v1/chat/completions", docs: "https://github.com/decolua/9router" },
+      { label: "OmniRoute", url: "http://127.0.0.1:20128/v1/chat/completions", docs: "https://github.com/diegosouzapw/OmniRoute" },
       { label: "Together AI", url: "https://api.together.xyz/v1/chat/completions", docs: "https://docs.together.ai/docs/inference/openai-compatibility" },
       { label: "Fireworks AI", url: "https://api.fireworks.ai/inference/v1/chat/completions", docs: "https://docs.fireworks.ai/tools-sdks/openai-compatibility" },
     ],

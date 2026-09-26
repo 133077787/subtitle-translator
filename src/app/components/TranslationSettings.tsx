@@ -357,7 +357,7 @@ const ServiceSettingsForm = ({ service }: { service: string }) => {
       )}
 
       {/* ========== Credentials group ========== */}
-      {(config?.url !== undefined || config?.apiKey !== undefined || config?.region !== undefined || config?.folderId !== undefined || config?.apiVersion !== undefined || config?.useRelay !== undefined) && (
+      {(config?.url !== undefined || config?.apiKey !== undefined || config?.region !== undefined || config?.folderId !== undefined || config?.useRelay !== undefined) && (
         <Section style={{ marginTop: 16 }} noGap>
           <Text strong style={{ display: "block", marginBottom: 8 }}>
             {t("credentialsGroup")}
@@ -558,11 +558,6 @@ const ServiceSettingsForm = ({ service }: { service: string }) => {
                   aria-label="Yandex Folder ID"
                   spellCheck={false}
                 />
-              </Form.Item>
-            )}
-            {config?.apiVersion !== undefined && (
-              <Form.Item label={`LLM API Version`} extra={`${tCommon("example")}: 2025-11-18`} style={{ marginBottom: config?.useRelay !== undefined ? 24 : 0 }}>
-                <Input value={config.apiVersion as string | undefined} onChange={(e) => handleConfigChange(service, "apiVersion", e.target.value)} aria-label="LLM API Version" spellCheck={false} />
               </Form.Item>
             )}
             {/* 这两个开关的说明文字由 antd Form.Item 渲染，不在我们的 JSX 里，

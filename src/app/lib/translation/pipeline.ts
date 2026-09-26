@@ -435,7 +435,7 @@ const translateSingle = async (text: string, cacheSuffix: string, config: Pipeli
   // reasoningEffort is derived per-call from the thinkingEffort record
   // (presence of entry for current model = effort, absence = thinking off).
   // satisfies:每个名字必须真是 TranslateTextParams 的键,改名/删字段时这里编译失败,不再是第三份手抄清单。
-  const optionalFields = ["useCache", "apiKey", "region", "url", "model", "apiVersion", "folderId", "temperature", "maxTokens", "systemPrompt", "userPrompt", "sendSystemPrompt", "useRelay", "relayBase", "domains"] as const satisfies readonly (keyof TranslateTextParams)[];
+  const optionalFields = ["useCache", "apiKey", "region", "url", "model", "folderId", "temperature", "maxTokens", "systemPrompt", "userPrompt", "sendSystemPrompt", "useRelay", "relayBase", "domains"] as const satisfies readonly (keyof TranslateTextParams)[];
   const extras: Record<string, unknown> = {};
   const configRecord = config as unknown as Record<string, unknown>;
   for (const key of optionalFields) {

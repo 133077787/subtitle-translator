@@ -100,7 +100,6 @@ export interface TranslationConfig {
   url?: string;
   region?: string;
   model?: string;
-  apiVersion?: string;
   /** Yandex AI Studio folder ID — per-tenant scope assembled into model URIs (gpt://<folderId>/<model>). */
   folderId?: string;
   temperature?: number;
